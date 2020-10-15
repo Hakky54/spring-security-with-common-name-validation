@@ -1,12 +1,10 @@
 package nl.altindag.server.controller;
 
 import org.springframework.http.MediaType;
-import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 
-@EnableWebFluxSecurity
 @RestController
 public class HelloWorldController {
 
