@@ -7,6 +7,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodyHandlers;
 
 public class App {
 
@@ -14,6 +15,7 @@ public class App {
         SSLFactory sslFactory = SSLFactory.builder()
                 .withIdentityMaterial("client-identity.jks", "secret".toCharArray())
                 .withTrustMaterial("client-truststore.jks", "secret".toCharArray())
+                .withProtocols("TLSv1.3")
                 .build();
 
         HttpClient httpClient = HttpClient.newBuilder()
@@ -26,7 +28,7 @@ public class App {
                 .uri(URI.create("https://localhost:443/hello"))
                 .build();
 
-        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        HttpResponse<String> response = httpClient.send(request, BodyHandlers.ofString());
         System.out.printf("Received [%d] status code from the server%n", response.statusCode());
     }
 

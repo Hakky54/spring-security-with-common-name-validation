@@ -8,13 +8,8 @@ import reactor.core.publisher.Flux;
 @RestController
 public class HelloWorldController {
 
-    @GetMapping(path = "/hello", produces = MediaType.TEXT_PLAIN_VALUE)
-    public String hello() {
-        return "Hello";
-    }
-
     @GetMapping(value = "/hello", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<String> events() {
+    public Flux<String> hello() {
         return Flux.just("Hello");
     }
 
